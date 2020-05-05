@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -30,11 +31,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button = (Button)findViewById(R.id.button1);
         textView = (TextView)findViewById(R.id.textView1);
-    }
-    public void click_on (View v) {
-        MyTask mt = new MyTask();
-        mt.execute();
-    }
+        final MediaPlayer doot_sound = MediaPlayer.create(this, R.raw.doot);
+        button.setOnClickListener(new OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                MyTask mt = new MyTask();
+                doot_sound.start();
+                mt.execute();
+                }
+            }
+        );}
 
     class MyTask extends AsyncTask<Void, Void, Void> {
         @Override

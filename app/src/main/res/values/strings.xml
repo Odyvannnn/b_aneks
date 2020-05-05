@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">b_aneks</string>
+    <string name="app_name">Анекдоты категории /b/</string>
     <string name="textview">TextView</string>
-    <string name="button">Button</string>
 </resources>
