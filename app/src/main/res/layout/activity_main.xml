@@ -31,17 +31,15 @@
     </ScrollView>
 
     <Button
-            android:id="@+id/button1"
-            android:layout_width="136dp"
-            android:layout_height="130dp"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/button"
-            android:onClick="click_on"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="OnClick" />
+        android:id="@+id/button1"
+        android:layout_width="136dp"
+        android:layout_height="130dp"
+        android:layout_marginHorizontal="8dp"
+        android:background="@drawable/button"
+        android:onClick="click_on"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="OnClick" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
