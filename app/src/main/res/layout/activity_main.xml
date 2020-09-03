@@ -7,6 +7,18 @@
     android:background="@drawable/gradient"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="136dp"
+        android:layout_height="130dp"
+        android:layout_marginHorizontal="8dp"
+        android:background="@drawable/button"
+        android:onClick="click_on"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="OnClick" />
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
@@ -29,17 +41,5 @@
             android:textColor="#252525"
             android:textSize="24sp" />
     </ScrollView>
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="136dp"
-        android:layout_height="130dp"
-        android:layout_marginHorizontal="8dp"
-        android:background="@drawable/button"
-        android:onClick="click_on"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="OnClick" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

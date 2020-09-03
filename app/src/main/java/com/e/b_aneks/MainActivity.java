@@ -9,19 +9,19 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.muddzdev.styleabletoast.StyleableToast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.safety.Whitelist;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     public Elements anek;
     public Element link;
+    public String last_str;
+    public String str_1;
+    public Elements link_3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +55,9 @@ public class MainActivity extends AppCompatActivity {
                 mt.execute();
                 }
             }
-        );}
+        );
+    }
+
 
     @SuppressLint("StaticFieldLeak")
     class MyTask extends AsyncTask <Void, Void, Void> {
@@ -60,16 +66,15 @@ public class MainActivity extends AppCompatActivity {
 
             Document doc = null;
             link = null;
-
+            //проверяем соединение с интернетом
             boolean connected = false;
             ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
             assert connectivityManager != null;
             if(Objects.requireNonNull(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)).getState() == NetworkInfo.State.CONNECTED ||
                     Objects.requireNonNull(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)).getState() == NetworkInfo.State.CONNECTED) {
-                //we are connected to a network
                 connected = true;
             }
-
+            //если подключены - берется анекдот с сайта
             if (connected = true) {
                 try {
                     doc = Jsoup.connect("https://baneks.site/random").get();
@@ -78,8 +83,16 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                if (doc != null)
+                if (doc != null) {
                     link = doc.select("p").first();
+                    doc.outputSettings(new Document.OutputSettings().indentAmount(0).prettyPrint(false));
+                    String link_1 = link.toString();
+                    Document link_2 = Jsoup.parse(link_1);
+                    link_2.select("br").after("\\n");
+                    link_3 = link_2.select("p").before("\\n");
+                    last_str = link_3.html().replaceAll("\\\\n", "\n");
+                    str_1 = Jsoup.clean(last_str, "", Whitelist.none(), new Document.OutputSettings().indentAmount(0).prettyPrint(false));
+                }
                 else
                     return null;
             }
@@ -91,20 +104,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-
-            //Тут выводим итоговые данные
+            //тут выводим итоговые данные
             if (link != null){
-                textView.setText(link.text());
+                textView.setText(str_1);
                 Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.fade_in);
                 textView.startAnimation(animation);}
             else {
                 textView.setText("");
-                Toast toast = Toast.makeText(MainActivity.this, "Проверьте соединение с интернетом", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                LinearLayout toastLayout = (LinearLayout) toast.getView();
-                TextView toastTV = (TextView) toastLayout.getChildAt(0);
-                toastTV.setTextSize(23);
-                toast.show();
+                StyleableToast.makeText(MainActivity.this, "Проверьте интернет-соединение", R.style.NetToast).show();
             }
         }
     }
