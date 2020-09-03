@@ -12,7 +12,10 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 doot_sound.start();
                 MyTask mt = new MyTask();
+                Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.fade_out);
+                textView.startAnimation(animation);
                 mt.execute();
                 }
             }
@@ -88,11 +93,17 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(result);
 
             //Тут выводим итоговые данные
-            if (link != null)
+            if (link != null){
                 textView.setText(link.text());
+                Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.fade_in);
+                textView.startAnimation(animation);}
             else {
+                textView.setText("");
                 Toast toast = Toast.makeText(MainActivity.this, "Проверьте соединение с интернетом", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
+                LinearLayout toastLayout = (LinearLayout) toast.getView();
+                TextView toastTV = (TextView) toastLayout.getChildAt(0);
+                toastTV.setTextSize(23);
                 toast.show();
             }
         }
