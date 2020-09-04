@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -43,6 +44,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button button = findViewById(R.id.button1);
+        Button info_button = findViewById(R.id.info_button);
+        info_button.setOnClickListener(new OnClickListener() {
+                                            @Override
+                                           public void onClick(View v) {
+                                               Intent intent = new Intent(v.getContext(), InfoActivity.class);
+                                               startActivity(intent);
+                                           }
+                                       });
         textView = findViewById(R.id.textView1);
         final MediaPlayer doot_sound = MediaPlayer.create(this, R.raw.doot);
         button.setOnClickListener(new OnClickListener(){

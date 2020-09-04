@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">#FF7C55</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="NetToast">
         <item name="stColorBackground">#77E4E4E4</item>
         <item name="stTextColor">#000000</item>
@@ -15,11 +16,14 @@
         <item name="stTextSize">23dp</item>
         <item name="stGravity">center</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
