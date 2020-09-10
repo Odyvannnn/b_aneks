@@ -11,6 +11,7 @@
         android:id="@+id/textview_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif-thin"
         android:text="@string/hello_first_fragment"
         android:textAlignment="center"

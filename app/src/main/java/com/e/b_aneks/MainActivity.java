@@ -3,6 +3,8 @@ package com.e.b_aneks;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -16,6 +18,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.muddzdev.styleabletoast.StyleableToast;
 
@@ -45,6 +48,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button button = findViewById(R.id.button1);
         Button info_button = findViewById(R.id.info_button);
+        Button copy_button = findViewById(R.id.copy_button);
+        copy_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/string");
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Анекдот");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, str_1);
+                startActivity(Intent.createChooser(sharingIntent, "Поделиться с помощью"));
+
+            }
+        });
         info_button.setOnClickListener(new OnClickListener() {
                                             @Override
                                            public void onClick(View v) {
