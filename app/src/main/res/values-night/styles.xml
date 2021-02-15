@@ -3,18 +3,18 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#FF9361</item>
-        <item name="colorPrimaryDark">#FF7C55</item>
-        <item name="colorAccent">#B9B9B9</item>
-        <item name="android:colorBackground">#F6BEA4</item>
+        <item name="colorPrimary">#171717</item>
+        <item name="colorPrimaryDark">#232323</item>
+        <item name="colorAccent">#000000</item>
+        <item name="android:colorBackground">#000000</item>
     </style>
-    
+
     <style name="TextViewPrimary">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">sans-serif-thin</item>
         <item name="android:gravity">fill</item>
-        <item name="android:textColor">#252525</item>
+        <item name="android:textColor">#D3D3D3</item>
         <item name="android:textSize">24sp</item>
     </style>
 

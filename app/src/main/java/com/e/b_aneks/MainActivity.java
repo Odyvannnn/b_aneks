@@ -1,6 +1,7 @@
 package com.e.b_aneks;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     public String last_str;
     public String str_1;
     public Elements link_3;
+
 
 
     @SuppressLint("SourceLockedOrientationActivity")
@@ -80,7 +82,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         );
+        AppCompatDelegate.setDefaultNightMode(
+                AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
     }
+
 
 
     @SuppressLint("StaticFieldLeak")
