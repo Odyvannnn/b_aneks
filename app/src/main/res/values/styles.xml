@@ -3,10 +3,10 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#FF9361</item>
-        <item name="colorPrimaryDark">#FF7C55</item>
+        <item name="colorPrimary">#DC7F54</item>
+        <item name="colorPrimaryDark">#DC6B49</item>
         <item name="colorAccent">#B9B9B9</item>
-        <item name="android:colorBackground">#F6BEA4</item>
+        <item name="android:colorBackground">#FFE6D8</item>
     </style>
     
     <style name="TextViewPrimary">
